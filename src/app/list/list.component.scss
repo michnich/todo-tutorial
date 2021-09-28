@@ -1,0 +1,24 @@
+@import "~bootswatch/dist/solar/variables";
+@import "~bootstrap/scss/bootstrap";
+
+.completed {
+    text-decoration: line-through;
+    color: map-get($theme-colors,"secondary") !important;
+}
+
+.task {
+    border-top: 1px map-get($theme-colors,"secondary") solid;
+}
+.taskSection, fa-icon {
+    cursor: pointer;
+}
+.taskTitle {
+    margin: 0;
+}
+.taskDate {
+    padding: 0;
+    margin: 0;
+}
+fa-icon:hover {
+    filter: brightness(0.9);
+}

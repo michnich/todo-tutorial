@@ -1,0 +1,57 @@
+<h1 class="text-center mb-3">To Do List</h1>
+
+<div class="container col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+  <!-- TOP SECTION -->
+  <div class="row justify-content-between">
+    <!-- SORT SELECT -->
+    <div class="form-group col col-md-4 col-sm-6 col-xs-12 d-inline-flex">
+      <label for="sort" class="form-label mr-2">Sort: </label>
+      <select
+        name="sort"
+        id="sort"
+        class="form-select form-control form-control-sm"
+        [(ngModel)]="sort"
+        (change)="updateSortState()"
+      >
+        <option value="created">Date Created</option>
+        <option value="due">Date Due</option>
+        <option value="alphabetical">Alphabetical</option>
+      </select>
+    </div>
+
+    <!-- DELETE ALL BUTTON -->
+    <div class="col col-md-3 col-sm-4 col-xs-12">
+      <button class="btn btn-sm btn-danger" (click)="deleteAll()">
+        Delete all
+      </button>
+    </div>
+  </div>
+
+  <!--TASK SECTION-->
+  <div class="row container-fluid">
+    <div
+      class="task row justify-content-between pt-3 mt-3"
+      *ngFor="let task of tasks | sort: sort"
+    >
+      <!-- TASK TITLE AND DATE -->
+      <div class="col col-sm-auto taskSection" (click)="completeTask(task)">
+        <p class="taskTitle" [class.completed]="task.completed">{{ task.title }}</p>
+        <small class="taskDate" [class.completed]="task.completed">{{ task.date | date: "shortDate" }}</small>
+      </div>
+
+      <!-- EDIT AND DELETE BUTTONS -->
+      <div class="col col-sm-auto">
+        <div>
+          <fa-icon [icon]="faEdit" size="lg" class="text-info mr-1" (click)="editTask(task)"></fa-icon>
+          <fa-icon
+            [icon]="faTrash"
+            size="lg"
+            class="text-warning"
+            (click)="deleteTask(task.id)"
+          ></fa-icon>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

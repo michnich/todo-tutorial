@@ -1,0 +1,63 @@
+<h1 class="text-center mb-3">Add Task</h1>
+<div class="container-fluid row justify-content-center">
+  <div class="col-sm-10">
+
+    <!-- FORM -->
+    <form #form="ngForm" (ngSubmit)="addTask(form)">
+      <div class="row">
+
+        <!-- TITLE -->
+        <div class="col-md-5 mb-2">
+          <div class="input-group form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              [(ngModel)]="task.title"
+              placeholder="Add a new task"
+              required
+              name="title"
+            />
+            <label for="title">Add a task</label>
+          </div>
+        </div>
+
+        <!-- DATE -->
+        <div class="col-md-5 mb-2">
+          <div class="input-group floatingHeight">
+            <input
+              class="form-control"
+              placeholder="yyyy-mm-dd"
+              ngbDatepicker
+              #date="ngbDatepicker"
+              id="date"
+              name="date"
+              [(ngModel)]="task.date"
+              required
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary calendar"
+                (click)="date.toggle()"
+                type="button"
+              >
+                <fa-icon [icon]="faCalendar"></fa-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTTON -->
+        <div class="col-md-2 mb-2">
+          <button
+              class="btn btn-lg btn-primary"
+              type="submit"
+              [disabled]="!form.valid"
+            >
+              Add task
+            </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

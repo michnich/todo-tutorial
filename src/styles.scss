@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap and Bootswatch */
+@import "~bootswatch/dist/solar/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/solar/bootswatch";
+@import "~bootswatch/dist/solar/bootstrap.min.css";
+
+
+p, h1, label, small {
+    color: map-get($theme-colors,"light");
+}
+
+ngb-datepicker {
+    background-color: map-get($theme-colors,"dark") !important;
+}
+
+.ngb-dp-header, .ngb-dp-week {
+    background-color: map-get($theme-colors,"dark") !important;
+    color: white;
+}
